@@ -18,6 +18,121 @@
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "description": "time spent in arm mode in the past year",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.3.5",
+      "targets": [
+        {
+          "expr": "sort_desc(sum(increase(armTime[1y:1m]))by(appName)/60)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{appName﻿}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Yearly Arm Time",
+      "type": "bargauge"
+    },
+    {
+      "datasource": null,
+      "description": "time spent in arm mode in the last month",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 3,
+        "x": 4,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.3.5",
+      "targets": [
+        {
+          "expr": "sort_desc(sum(increase(armTime[30d:1m]))by(appName)/60)",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{appName}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Monthly Arm Time",
+      "type": "bargauge"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -33,9 +148,9 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
+        "h": 19,
+        "w": 17,
+        "x": 7,
         "y": 0
       },
       "hiddenSeries": false,
@@ -77,7 +192,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "armTime",
+      "title": "Raw Arm Time",
       "tooltip": {
         "shared": true,
         "sort": 0,
